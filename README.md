@@ -1,2 +1,2 @@
-# Izhaar
- Minor Project
+# Izahaar
+ minor project

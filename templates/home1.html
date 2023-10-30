@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{%  block content %}
+
+<section class="header">
+    <nav>
+        <a class="logo" href="">IZAHAAR</a>
+        <div class="nav-links">
+            
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li><a href="">ABOUT</a></li>
+                <li><a href="">SIGNS</a></li>
+                <li><a href="{% url 'login' %}">LOGIN</a></li>
+            </ul>
+        </div>
+       
+    </nav>
+
+    <div class="text-box">
+        <h1>Communicate With Deaf And Hard Of Hearing People</h1>
+        <p>Izahaar is all you need to communicate with deaf and hard of hearing people</p>
+        <a href="{% url 'signup' %}" class="hero-btn">Create Account</a>
+
+    </div>
+    
+</section>
+<section class="about">
+    <div class="row">
+        
+        
+        <div class="about-col">
+            <h1>Our Website</h1>
+            <p>Izahaar automatically translates text and audio to sign language. 
+                <br> If you are interested in learning a new language 
+                in a practical and fun way, Izahaar is the right choice for you!</p>
+        </div>
+        <div class="about-col">
+            <img src="{% static 'images/downlaod.jpeg' %}" alt="">
+        </div>
+
+    </div>
+
+</section>
+
+<section class="footer">
+    <h4>abou us</h4>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima quis quibusdam provident
+        <br> quam, distinctio fugit magnam repellendus esse sequi, fuga ex ut qui laborum sit cum error fugiat quod. At?</p>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-linkedin-in"></i>
+        <i class="fa fa-google-plus-g"></i>
+        <i class="fa fa-twitter"></i>
+    </div>
+</section>
+{% endblock content %}
