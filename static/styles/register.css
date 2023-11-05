@@ -4,8 +4,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
-    background-color: rgb(207, 203, 203);
+    background-color: rgb(28, 9, 9);
+    
 }
 .background{
     width: 430px;
@@ -14,6 +16,8 @@ body{
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
+
+    background-image: url("static\images\image10.jpeg");
 }
 
 

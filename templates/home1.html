@@ -4,56 +4,119 @@
 
 {%  block content %}
 
-<section class="header">
-    <nav>
+  <div class="main--page">
+            <div class="home-page">
+                <div class="slideshow-container">
+
+                    <div class="mySlides fade">
+                        <img class="myslides--img" src="../static/images/image6.jpg" >
+                        
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img class="myslides--img" src="../static/images/image1.png">
+                        
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img class="myslides--img" src="../static/images/image2.jpg">
+                        
+                    </div>
+
+                    <div class="mySlides fade">
+                      <img class="myslides--img" src="../static/images/image7.png">
+                      
+                    </div>
+                    
+
+                </div>
+                
+                <div>
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+
+                </div>
+                
+            </div>
+            <!-- <nav class="navbar-container">
+                
+                <div class="logo">
+                    <a>IZAHAAR</a>
+                </div>
+                <div class="pages">
+                    <button>HOME</button>
+                    <button>ABOUT</button>
+                    <button>SIGNS</button>
+                    <button>LOGIN</button>
+                </div>
+            </nav>  -->
+            <div class="info">
+                <div alignment="justify">
+                  <h1 class="intro">Revolutionizing communication with real-time sign language detection with Izhaar</h1>            
+                </div>
+                
+                <a class="info-button" href="{% url 'signup' %}">Create Account</a>
+            </div>
+            
+        </div>
+        <div class="about--us" id ="about">
+            
+            <div class="imgAbout">
+              <img src= "static\images\image3.png">
+            </div>
+            
+            <div class="aboutDesc">
+              <h1>About Us</h1>
+              <div>At Izhaar, we're driven by a profound mission to break down communication barriers
+                for the Deaf and Hard of Hearing community. We are passionate about creating a more inclusive world through technology. 
+                We've developed cutting-edge sign language detection software facilitating real-time communication and promoting accessibility. 
+                Our vision is clear: to empower the Deaf and Hard of Hearing community and ensure that sign language is understood and respected as a vital form of communication. 
+               Join us on this inspiring journey towards a more connected world.</div>
+              
+              
+            </div>
+        </div>
+       
+
+    <section class="navbar-container">
+     <nav>
         <a class="logo" href="">IZAHAAR</a>
         <div class="nav-links">
             
             <ul>
                 <li><a href="">HOME</a></li>
-                <li><a href="">ABOUT</a></li>
-                <li><a href="">SIGNS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#sign">SIGNS</a></li>
                 <li><a href="{% url 'login' %}">LOGIN</a></li>
             </ul>
         </div>
        
-    </nav>
+    </nav> 
 
-    <div class="text-box">
+    
+    <!-- <div class="text-box">
         <h1>Communicate With Deaf And Hard Of Hearing People</h1>
         <p>Izahaar is all you need to communicate with deaf and hard of hearing people</p>
         <a href="{% url 'signup' %}" class="hero-btn">Create Account</a>
 
-    </div>
+    </div> -->
     
-</section>
-<section class="about">
-    <div class="row">
-        
-        
-        <div class="about-col">
-            <h1>Our Website</h1>
-            <p>Izahaar automatically translates text and audio to sign language. 
-                <br> If you are interested in learning a new language 
-                in a practical and fun way, Izahaar is the right choice for you!</p>
-        </div>
-        <div class="about-col">
-            <img src="{% static 'images/downlaod.jpeg' %}" alt="">
-        </div>
+  </section>
+  
+  <div class="page3" id="sign">
+    <h1>American Sign Language</h1>
+    <img src="static\images\image8.jpeg" alt="">
 
-    </div>
+  </div>
 
-</section>
-
-<section class="footer">
-    <h4>abou us</h4>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima quis quibusdam provident
-        <br> quam, distinctio fugit magnam repellendus esse sequi, fuga ex ut qui laborum sit cum error fugiat quod. At?</p>
+<!-- <section class="footer">
     <div class="icons">
         <i class="fa fa-facebook"></i>
         <i class="fa fa-linkedin-in"></i>
         <i class="fa fa-google-plus-g"></i>
         <i class="fa fa-twitter"></i>
     </div>
-</section>
+</section> -->
 {% endblock content %}
