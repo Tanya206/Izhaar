@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>hello</h1>
+    <img src="{% url 'video_feed' %}" alt="">
+    <div id="detectedTextElement">Detected text will appear here</div>
+    <script>
+        function updateDetectedText() {
+            // Make an AJAX request to your Django backend
+            $.ajax({
+                url: '{% url "predicted_text" %}',
+                success: function(data) {
+                    // Update the HTML element with the detected text
+                    $('#detectedTextElement').text(data.text);
+                },
+            });
+        }
+        
+        // Periodically update the detected text (e.g., every 1 second)
+        setInterval(updateDetectedText, 1000);
+        </script>
+</body>
+</html>

@@ -8,4 +8,7 @@ urlpatterns=[
     path('signup/',views.SignupPage,name='signup'),
     path('login/',views.LoginPage, name='login'),
     path('logout/',views.LogoutPage,name='logout'),
+    path('predict/',views.signToText,name="predict"),
+    path('video_feed/',views.video_feed,name="video_feed"),
+    path('predictedText/',views.predictedtext,name="predicted_text")
 ]
