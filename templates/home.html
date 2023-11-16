@@ -12,6 +12,29 @@
     <img src="{% url 'video_feed' %}" alt="">
     <div id="detectedTextElement">Detected text will appear here</div>
     <script>
+        document.addEventListener("keydown", function(event) {
+        var key = event.key;
+        // Send an AJAX request to the Django server
+        if (key === 'w') {
+            // Example: Append a space to the text variable on the server
+            $.ajax({
+                type: "GET",
+                url: "{% url '/append_period' %}",  // Adjust the URL based on your Django URL configuration
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        } else if (key === 's') {
+            // Example: Append a period to the text variable on the server
+            $.ajax({
+                type: "GET",
+                url: "{% url '/append_space' %}",  // Adjust the URL based on your Django URL configuration
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        }
+    });
         function updateDetectedText() {
             // Make an AJAX request to your Django backend
             $.ajax({

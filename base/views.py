@@ -87,6 +87,8 @@ def predict():
                 cv2.rectangle(imgOutput, (x - offset, y - offset),
                           (x + w + offset, y + h + offset), (255, 0, 255), 4)
                 text.append(labels[index])
+                time.sleep(2.5)
+                
 
             #cv2.imshow("ImageCrop", imgCrop)
             #cv2.imshow("ImageWhite", imgWhite)
@@ -95,13 +97,19 @@ def predict():
         _, jpeg_image = cv2.imencode('.jpg', imgOutput)
         yield(b'--frame\r\n'
               b'Content-Type: image/jpeg\r\n\r\n' + jpeg_image.tobytes() + b'\r\n\r\n')
-        
-        key = cv2.waitKey(1)
-        if key == ord("q"):
-            break
-        
+        # key = cv2.waitKey(1)
+        # if key == ord("q"):
+        #     break
+        # elif key== ord("w"):
+        #     text.append(" ")
+        #     break
+        # elif key== ord("s"):
+        #     text.append(".")
+        #     break
     cap.release()
     cv2.destroyAllWindows()
+        
+    
     
     
         
@@ -121,6 +129,16 @@ def predictedtext(request):
 
 def signToText(request):
     return render(request,'home.html')
+
+def append_space(request):
+    # Example: Append a space to the text variable on the server
+    text.append(" ")
+    return JsonResponse({"status": "success"})
+
+def append_period(request):
+    # Example: Append a period to the text variable on the server
+    text.append(".")
+    return JsonResponse({"status": "success"})
 
 
 
