@@ -19,7 +19,7 @@
             // Example: Append a space to the text variable on the server
             $.ajax({
                 type: "GET",
-                url: "{% url '/append_period' %}",  // Adjust the URL based on your Django URL configuration
+                url: "{% url 'append_period' %}",  // Adjust the URL based on your Django URL configuration
                 success: function(response) {
                     console.log(response);
                 }
@@ -28,7 +28,7 @@
             // Example: Append a period to the text variable on the server
             $.ajax({
                 type: "GET",
-                url: "{% url '/append_space' %}",  // Adjust the URL based on your Django URL configuration
+                url: "{% url 'append_space' %}",  // Adjust the URL based on your Django URL configuration
                 success: function(response) {
                     console.log(response);
                 }
@@ -38,7 +38,7 @@
         function updateDetectedText() {
             // Make an AJAX request to your Django backend
             $.ajax({
-                url: '{% url "predicted_text" %}',
+                url: '{% url "/predicted_text" %}',
                 success: function(data) {
                     // Update the HTML element with the detected text
                     $('#detectedTextElement').text(data.text);
