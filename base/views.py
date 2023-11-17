@@ -23,7 +23,7 @@ from django.http import JsonResponse
 # opencv to website
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
-
+#from django.views.decorators.csrf import csrf_exempt
 text=[]
 
 
@@ -132,13 +132,16 @@ def signToText(request):
 
 def append_space(request):
     # Example: Append a space to the text variable on the server
-    text.append(" ")
-    return JsonResponse({"status": "success"})
+    if request.method =='POST' and request.is_ajax():
+        print("Hello")
+        text.append(" ")
+        return JsonResponse({"status": "success"})
 
 def append_period(request):
     # Example: Append a period to the text variable on the server
-    text.append(".")
-    return JsonResponse({"status": "success"})
+    if request.method =='POST' and request.is_ajax():
+        text.append(".")
+        return JsonResponse({"status": "success"})
 
 
 

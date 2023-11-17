@@ -10,5 +10,8 @@ urlpatterns=[
     path('logout/',views.LogoutPage,name='logout'),
     path('predict/',views.signToText,name="predict"),
     path('video_feed/',views.video_feed,name="video_feed"),
-    path('predictedText/',views.predictedtext,name="predicted_text")
+    path('predictedText/',views.predictedtext,name="predicted_text"),
+    path('append_period/',views.append_period,name="append_period"),
+    path('append_space/', views.append_space,name="append_space"),
+
 ]

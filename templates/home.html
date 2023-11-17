@@ -12,42 +12,46 @@
     <img src="{% url 'video_feed' %}" alt="">
     <div id="detectedTextElement">Detected text will appear here</div>
     <script>
-        document.addEventListener("keydown", function(event) {
-        var key = event.key;
-        // Send an AJAX request to the Django server
-        if (key === 'w') {
-            // Example: Append a space to the text variable on the server
-            $.ajax({
-                type: "GET",
-                url: "{% url 'append_period' %}",  // Adjust the URL based on your Django URL configuration
-                success: function(response) {
-                    console.log(response);
-                }
-            });
-        } else if (key === 's') {
-            // Example: Append a period to the text variable on the server
-            $.ajax({
-                type: "GET",
-                url: "{% url 'append_space' %}",  // Adjust the URL based on your Django URL configuration
-                success: function(response) {
-                    console.log(response);
-                }
-            });
-        }
-    });
+        // Move the key event listener outside other functions
+     
         function updateDetectedText() {
             // Make an AJAX request to your Django backend
             $.ajax({
-                url: '{% url "/predicted_text" %}',
+                url: '{% url "predicted_text" %}',
                 success: function(data) {
                     // Update the HTML element with the detected text
                     $('#detectedTextElement').text(data.text);
                 },
             });
         }
+
+        document.onkeydown= function(event) {
+            console.log(event.key)
+            //Send an AJAX request to the Django server
+            if (event.key === 'w') {
+                // Example: Append a space to the text variable on the server
+                $.ajax({
+                    type: "POST",
+                    url: '{% url "append_period" %}',  // Adjust the URL based on your Django URL configuration
+                    success: function(response) {
+                        updateDetectedText();
+                    }
+                });
+            } else if (event.key === 's') {
+                // Example: Append a period to the text variable on the server
+                $.ajax({
+                    type: "POST",
+                    url: '{% url "append_space" %}',  // Adjust the URL based on your Django URL configuration
+                    success: function(response) {
+                       updateDetectedText();
+                    }
+                });
+           }
+        };
+
         
         // Periodically update the detected text (e.g., every 1 second)
         setInterval(updateDetectedText, 1000);
-        </script>
+    </script>
 </body>
 </html>
