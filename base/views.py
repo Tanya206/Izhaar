@@ -23,7 +23,8 @@ from django.http import JsonResponse
 # opencv to website
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
-#from django.views.decorators.csrf import csrf_exempt
+# space
+from django.views.decorators.csrf import csrf_exempt
 text=[]
 
 
@@ -57,7 +58,7 @@ def predict():
             imgWhite = np.ones((imgSize, imgSize, 3), np.uint8) * 255
             imgCrop = img[y - offset:y + h + offset, x - offset:x + w + offset]
 
-            imgCropShape = imgCrop.shape
+            imgCropShape = imgCrop.shape 
 
             # Check if imgCrop is not empty and has valid dimensions before resizing
             if imgCrop.size != 0 and imgCropShape[0] > 0 and imgCropShape[1] > 0:
@@ -124,25 +125,29 @@ def video_feed(request):
    # return render(request,'home.html',{})
 
 def predictedtext(request):
-    context={'text': text}
+    s = "".join(text)
+    
+    context={'text': s}
     return JsonResponse(context)
 
 def signToText(request):
     return render(request,'home.html')
 
-def append_space(request):
-    # Example: Append a space to the text variable on the server
-    if request.method =='POST' and request.is_ajax():
-        print("Hello")
-        text.append(" ")
-        return JsonResponse({"status": "success"})
-
+@csrf_exempt  # This decorator is used to exempt CSRF protection for this view
 def append_period(request):
-    # Example: Append a period to the text variable on the server
-    if request.method =='POST' and request.is_ajax():
-        text.append(".")
-        return JsonResponse({"status": "success"})
+    if request.method == 'POST':
+        text.append(" ")  # Append space to the text variable
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False})
 
+@csrf_exempt
+def append_space(request):
+    if request.method == 'POST':
+        text.append(". ")  # Append "." to the text variable
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False})
 
 
 def home1(request):

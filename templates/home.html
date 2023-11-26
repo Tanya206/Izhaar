@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'styles/main.js' %}"></script>
 </head>
 <body>
     {% for message in messages %}
@@ -26,20 +27,18 @@
     <div id="detectedTextElement">Detected text will appear here</div>
 
     <script>
-        // Move the key event listener outside other functions
-     
-        function updateDetectedText() {
-            // Make an AJAX request to your Django backend
-            $.ajax({
-                url: '{% url "predicted_text" %}',
-                success: function(data) {
-                    // Update the HTML element with the detected text
-                    $('#detectedTextElement').text(data.text);
-                },
-            });
-        }
-
-        document.onkeydown= function(event) {
+    function updateDetectedText() {
+        // Make an AJAX request to your Django backend
+        $.ajax({
+            url: '{% url "predicted_text" %}',
+            success: function(data) {
+                // Update the HTML element with the detected text
+                $('#detectedTextElement').text(data.text);
+            },
+        });
+    }
+    
+    document.onkeydown= function(event) {
             console.log(event.key)
             //Send an AJAX request to the Django server
             if (event.key === 'w') {
@@ -47,6 +46,7 @@
                 $.ajax({
                     type: "POST",
                     url: '{% url "append_period" %}',  // Adjust the URL based on your Django URL configuration
+                    data: {csrfmiddlewaretoken: window.CSRF_TOKEN},
                     success: function(response) {
                         updateDetectedText();
                     }
@@ -56,6 +56,7 @@
                 $.ajax({
                     type: "POST",
                     url: '{% url "append_space" %}',  // Adjust the URL based on your Django URL configuration
+                    data: {csrfmiddlewaretoken: window.CSRF_TOKEN},
                     success: function(response) {
                        updateDetectedText();
                     }
@@ -63,6 +64,7 @@
            }
         };
 
+<<<<<<< Updated upstream
         
         // Periodically update the detected text (e.g., every 1 second)
         setInterval(updateDetectedText, 1000);
@@ -72,5 +74,11 @@
     {% else %}
     <a href="{% url 'signup' %}">Sign up</a>
     {% endif %}
+=======
+    // Periodically update the detected text (e.g., every 1 second)
+    setInterval(updateDetectedText, 1000);
+    </script>
+    
+>>>>>>> Stashed changes
 </body>
 </html>
