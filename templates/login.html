@@ -11,10 +11,13 @@
     <link rel="stylesheet" href="{% static 'styles/register.css' %}">
   </head>
 <body>
-    <!-- <div class="background">
+     <!-- <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
-    </div> -->
+    </div>  -->
+    <div class="bg2">
+      <img src="../static/images/image10.jpeg"/>
+    </div>
     <form action="{% url 'login' %}" method="post">
         <h3>Login Here</h3>
         {% csrf_token %} 
@@ -32,5 +35,6 @@
         </div> -->
         <a href="{% url 'signup' %}" >Create a account</a>
     </form>
+  
 </body>
 </html>

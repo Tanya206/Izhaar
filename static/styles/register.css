@@ -6,10 +6,25 @@
 }
 
 body{
-  
+ margin: 0;
+ display:flex;
+
     
 }
-.background{
+.bg2{
+  margin:0;
+  object-fit: fill;
+  display: block;
+  
+}
+.bg2>img{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: top left;
+
+}
+/* .background{
     width: 430px;
     height: 520px;
     position: absolute;
@@ -17,8 +32,8 @@ body{
     left: 50%;
     top: 50%;
 
-    /* background-image: url("static\images\image10.jpeg"); */
-}
+    /* background-image: url("static\images\image10.jpeg"); 
+} */
 
 
 form{
@@ -34,7 +49,7 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding:  2%;
     padding-top: 1%;
-    opacity: 0.4;
+    opacity: 0.8;
     
 }
 form *{
@@ -43,13 +58,15 @@ form *{
     letter-spacing: 0.5px;
     outline: none;
     border: none;
-    opacity: 0.4;
+    opacity: 0.8;
 }
 form h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
+    opacity: 1;
+    color: white;
 }
 
 label{
@@ -57,12 +74,14 @@ label{
     margin-top: 30px;
     font-size: 16px;
     font-weight: 500;
+    opacity: 1;
+    color: white;
 }
 input{
     display: block;
-    color:black;
+    color:white;
     height: 50px;
-    width: 100%;
+    width: 95%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     padding: 0 10px;
@@ -76,15 +95,26 @@ input{
     color: #0ac49b;
 }
 button{
-    margin-top: 1%;
-    width: 100%;
-    background-color: linear-gradient(to right, #37ECBA, #75D473);
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: black;
     color:#ffffff;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
+    border:solid;
     cursor: pointer;
+    opacity: 1;
+    height: 50px;
+    width: 100%;    
+    border-radius: 3px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 300;
+    transition: 0.5s;
+   
+}
+button:hover{
+  background-color: white;
+  color: black;
 }
 .social{
   margin-top: 30px;
@@ -107,4 +137,36 @@ button{
 }
 .social i{
   margin-right: 4px;
+}
+form>a{
+  opacity: 0.5;
+  color: white;
+}
+
+.fname{
+  display: flex;
+  flex-direction: row;
+
+}
+.f1>h3{
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.f1>input{
+  margin-top: 20px;
+
+}
+.fname>input{
+  margin-top: 20px;
+  margin-right: 2px;
+  width: 46%;
+}
+.firstname{
+  margin-right: 12px !important; 
+}
+.f1{
+  width: 38vw;
+  height: 80vh;
+
 }
