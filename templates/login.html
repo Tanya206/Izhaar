@@ -15,14 +15,14 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div> -->
-    <form method="post">
+    <form action="{% url 'login' %}" method="post">
         <h3>Login Here</h3>
         {% csrf_token %} 
         <label for="username">Username</label>
         <input type="text" placeholder="Enter Username" id="username" name="username">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="pass">
+        <input type="password" placeholder="Enter your Password" id="pass1" name="pass1">
 
         <button  type="submit">Log In</button>
         <!-- <input type="button" value=""> -->

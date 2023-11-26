@@ -8,9 +8,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>hello</h1>
+    {% for message in messages %}
+    <div class = "alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+        {{message}}
+    <button type = "button" class="close" data-dissmiss="alert" aria-label="close">
+    <span aria-hidden = "true">&times;</span>
+    </button>            
+    </div>
+    {% endfor %}
+    {% if user.is_authenticated %}
+    <h3>Hello {{ fname }}</h3>
+    <h4>You are successfully logged in </h4>
+    
+    
     <img src="{% url 'video_feed' %}" alt="">
+
     <div id="detectedTextElement">Detected text will appear here</div>
+
     <script>
         // Move the key event listener outside other functions
      
@@ -52,6 +66,11 @@
         
         // Periodically update the detected text (e.g., every 1 second)
         setInterval(updateDetectedText, 1000);
+        
     </script>
+    <a href="{% url 'logout' %}">logout</a>
+    {% else %}
+    <a href="{% url 'signup' %}">Sign up</a>
+    {% endif %}
 </body>
 </html>
