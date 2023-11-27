@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
+from .models import history
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -123,10 +125,20 @@ def video_feed(request):
     except:
         pass
    # return render(request,'home.html',{})
-
+@login_required
+@csrf_exempt
 def predictedtext(request):
+    if request.method=='POST':
+        save_history=request.POST.get('save_history')
+        if save_history:
+            user=request.user
+            saved_text="".join(text)
+
+            history.objects.create(user=user, translation_text=saved_text)
+            text.clear()
+            return redirect('show_history')
+
     s = "".join(text)
-    
     context={'text': s}
     return JsonResponse(context)
 
@@ -154,6 +166,26 @@ def home1(request):
     context={}
     
     return render(request,'home1.html',context)
+
+@login_required
+def show_history(request):
+    user=request.user
+    history_enteries=history.objects.filter(user=user).order_by('-translation_date')
+    return render (request, 'history.html',{'history_enteries':history_enteries})
+
+# @login_required
+# def save_history(request):
+#     user=request.user
+#     s="".join(text)
+
+#     history.objects.create(user=user, translation_text=s)
+#     text=[]
+#     return
+    # if request.method=='POST':
+    #     translation_text=request.POST.get('translation_text','')
+    #     user=request.user
+
+    #     history.objects.create(user=user,translation_text=translation_text)
 
 
 def SignupPage(request):

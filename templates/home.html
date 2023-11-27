@@ -26,6 +26,12 @@
     <img src="{% url 'video_feed' %}" alt="">
 
     <div id="detectedTextElement">Detected text will appear here</div>
+    
+    <form method="post" action="{% url 'predicted_text' %}">
+        {% csrf_token %}
+        <button type="submit" name="save_history" value="true">Save</button>
+    </form>
+ 
 
     <script>
     function updateDetectedText() {
@@ -65,7 +71,6 @@
            }
         };
 
-<<<<<<< Updated upstream
         
         // Periodically update the detected text (e.g., every 1 second)
         setInterval(updateDetectedText, 1000);
@@ -75,11 +80,5 @@
     {% else %}
     <a href="{% url 'signup' %}">Sign up</a>
     {% endif %}
-=======
-    // Periodically update the detected text (e.g., every 1 second)
-    setInterval(updateDetectedText, 1000);
-    </script>
-    
->>>>>>> Stashed changes
 </body>
 </html>

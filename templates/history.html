@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<ul>
+    {% for entry in history_enteries %}
+    <li>
+        <h3>{{entry.translation_date}} </h3>
+        <p>{{entry.translation_text}} </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

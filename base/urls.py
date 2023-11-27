@@ -13,5 +13,7 @@ urlpatterns=[
     path('predictedText/',views.predictedtext,name="predicted_text"),
     path('append_period/',views.append_period,name="append_period"),
     path('append_space/', views.append_space,name="append_space"),
+    path('show_history/',views.show_history,name="show_history"),
+
 
 ]
