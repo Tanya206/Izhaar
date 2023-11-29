@@ -30,6 +30,8 @@ from django.views.decorators.csrf import csrf_exempt
 text=[]
 
 
+
+
 def predict():
     cap = cv2.VideoCapture(0)
     detector = HandDetector(maxHands=1)
@@ -45,7 +47,7 @@ def predict():
     offset = 20
     imgSize = 300
 
-    labels = ["A", "B", "C"]
+    labels = ["A", "B", "C","D","E","F","G","H","I","J","K","L","M","_N","O","P","Q","R","S","T","_U","V","W","X","Y"]
 
     
 
@@ -90,7 +92,7 @@ def predict():
                 cv2.rectangle(imgOutput, (x - offset, y - offset),
                           (x + w + offset, y + h + offset), (255, 0, 255), 4)
                 text.append(labels[index])
-                time.sleep(2.5)
+                
                 
 
             #cv2.imshow("ImageCrop", imgCrop)
@@ -112,7 +114,6 @@ def predict():
     cap.release()
     cv2.destroyAllWindows()
         
-    
     
     
         

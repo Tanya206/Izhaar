@@ -8,37 +8,62 @@
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
         <link rel="stylesheet" href="{% static 'uikit/css/uikit.min.css' %}" />
-        <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/home.css' %}">
         <script src="{% static 'uikit/js/uikit.min.js' %}"></script>
         <script src="{% static 'js/uikit-icons.min.js' %}"></script>
     </head>
 <body>
-    
+
+    {% include 'navbar.html' %}
 
     {% block content %}
 
     {% endblock content %}
-    <script>
-        let slideIndex = 0;
-        showSlides();
 
-        function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
+    <script>
+        function updateDetectedText() {
+            // Make an AJAX request to your Django backend
+            $.ajax({
+                url: '{% url "predicted_text" %}',
+                success: function(data) {
+                    // Update the HTML element with the detected text
+                    $('#detectedTextElement').text(data.text);
+                },
+            });
         }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-    </script>
+        
+        document.onkeydown= function(event) {
+                console.log(event.key)
+                //Send an AJAX request to the Django server
+                if (event.key === 'w') {
+                    // Example: Append a space to the text variable on the server
+                    $.ajax({
+                        type: "POST",
+                        url: '{% url "append_period" %}',  // Adjust the URL based on your Django URL configuration
+                        data: {csrfmiddlewaretoken: window.CSRF_TOKEN},
+                        success: function(response) {
+                            updateDetectedText();
+                        }
+                    });
+                } else if (event.key === 's') {
+                    // Example: Append a period to the text variable on the server
+                    $.ajax({
+                        type: "POST",
+                        url: '{% url "append_space" %}',  // Adjust the URL based on your Django URL configuration
+                        data: {csrfmiddlewaretoken: window.CSRF_TOKEN},
+                        success: function(response) {
+                           updateDetectedText();
+                        }
+                    });
+               }
+            };
+    
+            
+            // Periodically update the detected text (e.g., every 1 second)
+            setInterval(updateDetectedText, 1000);
+            
+        </script>
+    
 
     
 </body>

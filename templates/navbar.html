@@ -1,26 +1,26 @@
-{% load static %}
-<nav class="uk-navbar-container uk-navbar-transparent ">
-    <div class="uk-container">
-        <div uk-navbar>
+{% load static%}
 
-            <div class="uk-navbar-left">
+<section class="navbar-container">
+    <nav>
+       <a class="logo" href="">IZHAAR</a>
+       <div class="nav-links">
+           
+           <ul>
+               <li><a href="">HOME</a></li>
+               <li><a href="#about">ABOUT</a></li>
+               <li><a href="#sign">SIGNS</a></li>
+               <li><a href="{% url 'login' %}">LOGIN</a></li>
+           </ul>
+       </div>
+      
+   </nav> 
 
-                <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">IZAHAAR</a>
+   
+   <!-- <div class="text-box">
+       <h1>Communicate With Deaf And Hard Of Hearing People</h1>
+       <p>Izahaar is all you need to communicate with deaf and hard of hearing people</p>
+       <a href="{% url 'signup' %}" class="hero-btn">Create Account</a>
 
-            </div>
-            <div class="uk-navbar-right">
-
-                <ul class="uk-navbar-nav nave-links">
-                    <li class="uk-active"><a href="#">HOME</a></li>
-                    <li><a class=" uk-button uk-button-text" href="{% url 'home1' %}" >ABOUT US</a> </li>
-                    <li><a class=" uk-button uk-button-text" href="{% url 'home1' %}" >SIGNS</a> </li>
-                    <li><a class=" uk-button uk-button-text" href="{% url 'home1' %}" >LOGIN</a> </li>
-                </ul>
-
-            </div>
-
-        </div>
-
-        </div>
-    </div>
-</nav>
+   </div> -->
+   
+ </section>

@@ -1,8 +1,19 @@
-{% extends 'main.html' %}
-
+<!DOCTYPE html>
 {% load static %}
-
-{%  block content %}
+<html lang="en">
+    <head>
+        <title>Izahaar</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="{% static 'uikit/css/uikit.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+        <script src="{% static 'uikit/js/uikit.min.js' %}"></script>
+        <script src="{% static 'js/uikit-icons.min.js' %}"></script>
+    </head>
+    <body>
+        
 
   <div class="main--page">
             <div class="home-page">
@@ -110,13 +121,26 @@
     <img src="static\images\image11.jpg" alt="">
 
   </div>
+  <script>
+    let slideIndex = 0;
+    showSlides();
 
-<!-- <section class="footer">
-    <div class="icons">
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-linkedin-in"></i>
-        <i class="fa fa-google-plus-g"></i>
-        <i class="fa fa-twitter"></i>
-    </div>
-</section> -->
-{% endblock content %}
+    function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
+</body>
+</html>

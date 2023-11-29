@@ -10,6 +10,7 @@
     <script src="{% static 'styles/main.js' %}"></script>
 </head>
 <body>
+    {% include 'navbar.html' %}
     {% for message in messages %}
     <div class = "alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
         {{message}}
@@ -20,17 +21,15 @@
     {% endfor %}
     {% if user.is_authenticated %}
     <h3>Hello {{ fname }}</h3>
-    <h4>You are successfully logged in </h4>
-    
-    
     <img src="{% url 'video_feed' %}" alt="">
-
-    <div id="detectedTextElement">Detected text will appear here</div>
-    
     <form method="post" action="{% url 'predicted_text' %}">
         {% csrf_token %}
-        <button type="submit" name="save_history" value="true">Save</button>
+        <button class="btn" type="submit" name="save_history" value="true">Save</button>
     </form>
+    <div class="text">
+    <h4 id="detectedTextElement">Detected text will appear here</h4>
+    </div>
+    
  
 
     <script>
