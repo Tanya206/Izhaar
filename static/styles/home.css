@@ -3,7 +3,7 @@ body {
     font-family: 'Merriweather', serif;
     color: #40514E;
     margin: 0;
-    background-color: #f5f5f5;
+    background-color: #ebd6d7;
 }
 
 h3 {
@@ -31,6 +31,7 @@ img{
     border: 15px cyan;
     word-wrap: break-word; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #f9ebd9;
 }
 
 h4{
@@ -121,7 +122,7 @@ nav.fa{
 
 
 .navbar-container{
-    background-color: rgb(69, 228, 215);
+    background-color: #F09B93;
 	padding: 10px 10px;
 	/*position:fixed;*/
 	top: 0;

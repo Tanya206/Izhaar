@@ -39,8 +39,8 @@ def predict():
     folder = "Model"
 
     # Construct the full paths for the model and labels files
-    model_path = os.path.join(folder, "keras_model.h5")
-    labels_path = os.path.join(folder, "labels.txt")
+    model_path = os.path.join(folder, "keras_model.h5")                     #connecting model with django
+    labels_path = os.path.join(folder, "labels.txt")                        
 
     classifier = Classifier(model_path, labels_path)
 

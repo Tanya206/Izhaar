@@ -4,10 +4,12 @@
 {% block content %}
 <ul>
     {% for entry in history_enteries %}
+    <div class="text">
     <li>
         <h3>{{entry.translation_date}} </h3>
         <p>{{entry.translation_text}} </p>
     </li>
+    </div>
     {% endfor %}
 </ul>
 {% endblock content %}
